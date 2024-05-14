@@ -36,16 +36,21 @@ print("Similarity between 'cat' and 'dog':", similarity)
 While word vectors are high-dimensional, you can visualize them in a lower-dimensional space using dimensionality reduction techniques like t-SNE:
 
 ```python
+import spacy
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
+
+# Load the Spacy model
+nlp = spacy.load("en_core_web_sm")
 
 # Collect word vectors
 words = ["apple", "orange", "banana", "dog", "cat", "elephant"]
 word_vectors = np.array([nlp(word).vector for word in words])
 
 # Apply t-SNE for dimensionality reduction
-tsne = TSNE(n_components=2, random_state=42)
+# Set perplexity to a value less than the number of samples, e.g., 5
+tsne = TSNE(n_components=2, random_state=42, perplexity=5)
 word_vectors_2d = tsne.fit_transform(word_vectors)
 
 # Plot
