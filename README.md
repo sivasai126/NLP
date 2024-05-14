@@ -44,3 +44,11 @@ The tutorials are divided into modules, each focusing on a different aspect of N
 4. [Named Entity Recognition](tutorial/04_NER.md)
 5. [Word Vectors and Text Similarities](tutorial/05_Vectors_and_Similarity.md)
 6. [Advanced Topics](tutorial/06_Advanced_Topics.md)
+
+
+
+markdown
+## `Disclaimer`
+
+Please note that the tutorials provided here are intended as an introduction and overview of using SpaCy for various Natural Language Processing (NLP) tasks. This content is not a substitute for the official SpaCy documentation, which provides comprehensive details, updates, and more advanced usage scenarios. We strongly recommend referring to the official SpaCy documentation available at [https://spacy.io](https://spacy.io) for in-depth guidance and the latest features.
+
