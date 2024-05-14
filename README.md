@@ -38,9 +38,9 @@ python -m spacy download en_core_web_sm
 
 The tutorials are divided into modules, each focusing on a different aspect of NLP using SpaCy. Navigate to each tutorial by clicking on the links below:
 
-1. [Introduction to SpaCy](tutorials/01_Introduction.md)
-2. [Text Preprocessing](tutorials/02_Text_Preprocessing.md)
-3. [Part-of-Speech Tagging and Dependency Parsing](tutorials/03_POS_and_Parsing.md)
-4. [Named Entity Recognition](tutorials/04_NER.md)
-5. [Word Vectors and Text Similarities](tutorials/05_Vectors_and_Similarity.md)
-6. [Advanced Topics](tutorials/06_Advanced_Topics.md)
+1. [Introduction to SpaCy](tutorial/01_Introduction.md)
+2. [Text Preprocessing](tutorial/02_Text_Preprocessing.md)
+3. [Part-of-Speech Tagging and Dependency Parsing](tutorial/03_POS_and_Parsing.md)
+4. [Named Entity Recognition](tutorial/04_NER.md)
+5. [Word Vectors and Text Similarities](tutorial/05_Vectors_and_Similarity.md)
+6. [Advanced Topics](tutorial/06_Advanced_Topics.md)
