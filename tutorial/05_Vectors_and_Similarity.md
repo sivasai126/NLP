@@ -1,58 +1,67 @@
-
 ### Word Vectors and Text Similarity Tutorial (05_Vectors_and_Similarity.md)
 
 
 # Word Vectors and Text Similarity with SpaCy
 
-In this tutorial, we'll explore how to work with word vectors and measure text similarity using SpaCy. Word vectors are numerical representations of words, which capture semantic meanings and relationships between words in a high-dimensional space. Text similarity measures allow us to quantify how similar two pieces of text are to each other.
+In this tutorial, we'll explore how to work with word vectors and calculate text similarity using SpaCy. Word vectors are dense numerical representations of words in a high-dimensional space, which capture semantic meaning and relationships between words.
 
 ## Word Vectors in SpaCy
 
-SpaCy provides word vectors as part of its pre-trained models. These vectors are obtained using techniques like word embeddings, which capture semantic relationships between words based on their usage in context.
+SpaCy provides access to pre-trained word vectors, which you can use directly or fine-tune for your specific tasks. Here's how to access word vectors for individual tokens:
 
 ```python
 import spacy
 
-# Load the pre-trained model
 nlp = spacy.load("en_core_web_sm")
+doc = nlp("apple orange banana")
 
-# Access word vectors
-word = nlp("apple")
-print(word.vector)
+for token in doc:
+    print(token.text, token.vector[:3])  # Print the first three elements of each word's vector
 ```
 
-## Measuring Text Similarity
+## Calculating Text Similarity
 
-SpaCy allows us to measure similarity between words, phrases, or documents using word vectors. Similarity scores range from 0 to 1, with higher scores indicating greater similarity.
+Text similarity measures the degree of closeness or similarity between two pieces of text. SpaCy allows you to calculate similarity between documents based on their word vectors:
 
 ```python
 doc1 = nlp("cat")
 doc2 = nlp("dog")
-similarity_score = doc1.similarity(doc2)
-print(similarity_score)
+
+similarity = doc1.similarity(doc2)
+print("Similarity between 'cat' and 'dog':", similarity)
 ```
 
-## Applications of Text Similarity
+## Visualizing Word Vectors
 
-Text similarity measures have various applications, including:
-- Document clustering
-- Information retrieval
-- Recommender systems
-- Duplicate detection
-- Paraphrase detection
-
-## Visualizing Similarity
-
-We can visualize text similarity using heatmaps to gain insights into the relationships between different pieces of text.
+While word vectors are high-dimensional, you can visualize them in a lower-dimensional space using dimensionality reduction techniques like t-SNE:
 
 ```python
-from spacy import displacy
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.manifold import TSNE
 
-displacy.render([doc1, doc2], style="dep", jupyter=True)  # Use jupyter=False if not in a Jupyter notebook
+# Collect word vectors
+words = ["apple", "orange", "banana", "dog", "cat", "elephant"]
+word_vectors = np.array([nlp(word).vector for word in words])
+
+# Apply t-SNE for dimensionality reduction
+tsne = TSNE(n_components=2, random_state=42)
+word_vectors_2d = tsne.fit_transform(word_vectors)
+
+# Plot
+plt.figure(figsize=(8, 6))
+for i, word in enumerate(words):
+    plt.scatter(word_vectors_2d[i, 0], word_vectors_2d[i, 1], marker='o', color='blue')
+    plt.text(word_vectors_2d[i, 0] + 0.05, word_vectors_2d[i, 1] + 0.05, word, fontsize=12)
+plt.xlabel("Dimension 1")
+plt.ylabel("Dimension 2")
+plt.title("Word Vectors Visualization")
+plt.grid(True)
+plt.show()
 ```
 
 ## Conclusion
 
-This tutorial covered the basics of working with word vectors and measuring text similarity using SpaCy. You've learned how to access word vectors, calculate similarity scores, and visualize similarity relationships. These techniques are essential for a wide range of NLP applications.
+You've now learned how to work with word vectors and calculate text similarity using SpaCy. These techniques are fundamental for many NLP tasks, including information retrieval, text classification, and recommendation systems.
 
 [Return to main page](../README.md)
