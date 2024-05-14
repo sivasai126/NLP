@@ -1,4 +1,4 @@
-### Example Tutorial Markdown Page (01_Introduction.md)
+### (01_Introduction.md)
 
 # Introduction to SpaCy
 
